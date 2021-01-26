@@ -142,5 +142,14 @@ def make_prediction(model, headers, scale=False, encoding=False):
                      str(model.predict(prediction).flatten()))
 
 
-make_prediction(model, HEADERS, scale=scaling_needed,
-                encoding=encoding_needed)
+run = True
+while run:
+    make_prediction(model, HEADERS, scale=scaling_needed,
+                    encoding=encoding_needed)
+    MsgBox = tk.messagebox.askquestion(
+        'Exit Application', 'Would you like to make another prediction?', icon='info')
+    if MsgBox == 'yes':
+        pass
+    else:
+        root.destroy()
+        run = False
